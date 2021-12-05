@@ -1,0 +1,11 @@
+header {
+    display: flex;
+    background-color: blue;
+    background-image: linear-gradient(to right, blue, purple);
+    justify-content: center;
+}
+
+.title {
+    color: white;
+    padding: 15px;
+}
