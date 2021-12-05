@@ -9,3 +9,11 @@ header {
     color: white;
     padding: 15px;
 }
+
+ul {
+    list-style-type: none;
+}
+
+.forcast-card {
+    color: white;
+}
