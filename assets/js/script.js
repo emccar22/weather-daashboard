@@ -5,8 +5,8 @@ var searchHistoryEl = document.getElementById("search-button-container");
 var currentWeatherConatinerEl = document.getElementById("current-weather-container");
 var currentCityEl = document.getElementById("current-city");
 var currentIcon = document.getElementById("current-icon");
-var currentDataListEl = document.getElementById("current-data-list");
 var forecastConatinerEl = document.getElementById("forecast-container")
+var historyButtonEl = document.getElementById("history-button")
 
 var coordinates = {
     lat: "",
@@ -39,22 +39,32 @@ var getWeather = function() {
                 
                 var currentUvIndexEl = document.getElementById("current-uv");
                 currentUvIndexEl.textContent = "UV Index: " + data.current.uvi;
+                if (data.current.uvi <= 2) {
+                    currentUvIndexEl.className = "bg-success"
+                }
+                else if (data.current.uvi <= 5) {
+                    currentUvIndexEl.className = "bg-warning"
+                }
+                else {
+                    currentUvIndexEl.className = "bg-danger"
+                }
 
                 var forecastDiv = document.createElement("div");               
-                forecastDiv.className = "row mt-4"
+                forecastDiv.className = "row mt-4 justify-content-between"
                 forecastConatinerEl.appendChild(forecastDiv);
 
                 var forecastTitleEl = document.createElement("h4");
-                forecastTitleEl.textContent = "5-Day Forecast";
+                forecastTitleEl.textContent = "5-Day Forecast:";
                 forecastDiv.appendChild(forecastTitleEl);
 
                 for (var i = 0; i < data.daily.length - 3; i++) {
-                    var days = 1
+                    
                     
                     var dailyContainerEl = document.createElement("div");
                     dailyContainerEl.className = "card col-2 m-2 bg-dark forcast-card"
                     forecastDiv.appendChild(dailyContainerEl);
                     
+                    var days = i + 1
                     var forecastDateEl = document.createElement("h5");
                     forecastDateEl.className = "card-title mt-2"
                     forecastDateEl.textContent = moment().add(days, "days").format('L');;
@@ -65,7 +75,8 @@ var getWeather = function() {
                     
                     var forecastIconEl = document.createElement("img");
                     forecastIconEl.setAttribute("src", forecastIconUrl);
-                    dailyContainerEl.appendChild.forecastIconEl;
+                    forecastIconEl.className = "forecast-image";
+                    dailyContainerEl.appendChild(forecastIconEl);
 
                     var forecastTempEl = document.createElement("p");
                     forecastTempEl.textContent = "Temp: " + data.daily[i].temp.day + " \xB0F";
@@ -106,11 +117,18 @@ var getLocation = function(city) {
     
 }
 
+// var historyClickHandler = function(event) {
+//     historyButtonEl.addEventListener("submit", getLocation)
+//     console.log("clicked")
+    
+// }
+
 var formSubmitHandler = function(event) {
     event.preventDefault();
 
     var city = searchInputEl.value.trim();
     currentCity = city;
+   
 
     if (city) {
         getLocation(city);
@@ -118,6 +136,8 @@ var formSubmitHandler = function(event) {
         var historyButtonEl = document.createElement("button");
         historyButtonEl.className = "btn btn-secondary col-12 mt-1 mb-1";
         historyButtonEl.setAttribute("value", city);
+        historyButtonEl.setAttribute("id", "history-button");
+        historyButtonEl.setAttribute("type", "submit");
         historyButtonEl.textContent = city;
         searchHistoryEl.appendChild(historyButtonEl);
         forecastConatinerEl.innerHTML = "";
@@ -126,6 +146,12 @@ var formSubmitHandler = function(event) {
     }
 }
 
+
+
+
 cityFormEl.addEventListener("submit", formSubmitHandler);
+
+
+
 
 

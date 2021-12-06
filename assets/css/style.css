@@ -10,10 +10,20 @@ header {
     padding: 15px;
 }
 
-ul {
-    list-style-type: none;
+.current {
+    padding: 5px;
+}
+
+span {
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .forcast-card {
     color: white;
 }
+
+.forecast-image {
+    max-height: 50px;
+    max-width: 50px;
+} 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,50 +9,52 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
+
 <body>
     <header>
         <h1 class="title">Weather Dashboard</h1>
     </header>
 
-<main class="container">
-    <div class="row">
-        <div class="col-4 flex-wrap">
-            <div class="card mt-2">
-            <h3 class="card-header">Search For a City:</h3>
-            <form id="city-search" class="card-body">
-            <input type="text" id="city" placeholder="Enter a City" class="col-12 mb-2">
-            <button id="search-button" type="submit" class="btn btn-primary col-12" value="Search">Search</button>
-            </form>
+    <main class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="card mt-2">
+                    <h3 class="card-header">Search For a City:</h3>
+                    <form id="city-search" class="card-body">
+                        <input type="text" id="city" placeholder="Enter a City" class="col-12 mb-2">
+                        <button id="search-button" type="submit" class="btn btn-primary col-12"
+                            value="Search">Search</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div id="current-weather-container" class="col-8">
-            <h2 id="current-city" class="mt-2">
-                
-            </h2>
-            <img id="current-icon" src="">
-            <ul id="current-data-list">
-                <li id="current-temp"></li>
-                <li id="current-wind"></li>
-                <li id="current-humidity"></li>
-                <li id="current-uv"></li>
-            </ul>
-        </div>
-       
-        <div id="search-button-container" class="col-4">
+            <div id="current-weather-container" class="col-8">
+                <h2 id="current-city" class="mt-2"></h2>
+
+                <img id="current-icon" src="">
+
+                <p id="current-temp"></p>
+                <p id="current-wind"></p>
+                <p id="current-humidity"></p>
+                <span id="current-uv"></span>
+
+            </div>
+
+            <div id="search-button-container" class="col-4">
+
+            </div>
+
+            <div id="forecast-container" class="col-8">
+
+            </div>
+
 
         </div>
 
-        <div id="forecast-container" class="col-8">
+    </main>
 
-       </div>
-        
 
-    </div>
-
-</main>
- 
-    
-  <script src="./assets/js/script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </body>
+
 </html>
