@@ -19,7 +19,6 @@ var getWeather = function() {
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data)
                 currentWeatherConatinerEl.className = "border col-8 mt-2"
                 currentCityEl.textContent = currentCity + " (" +moment().format('L') + ")";
                 
@@ -106,22 +105,22 @@ var getLocation = function(city) {
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data)
                 coordinates.lat = data[0].lat
                 coordinates.lon = data[0].lon
-                console.log(coordinates);
                 getWeather();
+                localStorage.setItem(city, JSON.stringify(coordinates));
             })
         }
     })
     
 }
 
-// var historyClickHandler = function(event) {
-//     historyButtonEl.addEventListener("submit", getLocation)
-//     console.log("clicked")
-    
-// }
+var loadHistory = function() {
+    localStorage.getItem("city")
+    console.log(city);
+    historyButtonEl.addEventListener("submit",);
+    getWeather();
+}
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -140,16 +139,16 @@ var formSubmitHandler = function(event) {
         historyButtonEl.setAttribute("type", "submit");
         historyButtonEl.textContent = city;
         searchHistoryEl.appendChild(historyButtonEl);
+        
         forecastConatinerEl.innerHTML = "";
     } else {
         alert("Please Enter a City")
     }
 }
 
-
-
-
 cityFormEl.addEventListener("submit", formSubmitHandler);
+
+loadHistory();
 
 
 
